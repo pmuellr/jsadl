@@ -1,0 +1,31 @@
+{
+  "name":         "jsadl",
+  "description":  "JavaScript API Definition Language",
+  "keywords":     ["javascript", "language", "idl", "API"],
+  "author":       "Patrick Mueller",
+  "version":      "0.1.0",
+  "dependencies": {
+    "coffee-script": ">= 1.1.2",
+    "optimist":      ">= 0.2.6"
+    }
+  },
+  "licenses":     [{
+    "type":       "MIT",
+    "url":        "http://github.com/pmuellr/jsadl/raw/master/LICENSE"
+  }],
+  "engines":      {
+    "node":       ">=0.2.5"
+  },
+  "directories" : {
+    "lib" : "./lib"
+  },
+  "main" : "./lib/jsasdl",
+  "bin":          {
+    "jsadl":     "./bin/jasdl",
+  },
+  "homepage":     "https://github.com/pmuellr/jsadl",
+  "repository":   {
+    "type": "git",
+    "url": "git://github.com/pmuellr/jsadl.git"
+  }
+}
