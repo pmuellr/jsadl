@@ -1,0 +1,47 @@
+alias events: "./PGEvents"
+
+aGlobal 'navigator.accelerometer': implements 'Accelerometer'
+
+exportsInterface 'Accelerometer'
+
+#-------------------------------------------------------------------------------
+anInterface Accelerometer:
+    implements: 'events.EventEmitter'
+
+    methods:
+
+        getCurrentAcceleration: 'void (
+            success: AccelerometerValue
+            error:   AccelerometerError
+            )'
+
+        watchAcceleration: 'string (
+            success: AccelerometerValue
+            error:   AccelerometerError
+            options: AccelerometerOptions?
+            )'
+
+        clearWatch: 'void (watchID: string)'
+
+    events:
+
+        change: 'AccelerometerValue'
+
+#-------------------------------------------------------------------------------
+aFunction AccelerometerValue: 'void (acceleration: Acceleration)'
+
+#-------------------------------------------------------------------------------
+aFunction AccelerometerError: 'void ()'
+
+#-------------------------------------------------------------------------------
+aShape Acceleration:
+    properties:
+        x:         ['number', 'the X factor']
+        y:         'number'
+        z:         'number'
+        timestamp: 'number'
+
+#-------------------------------------------------------------------------------
+aShape AccelerometerOptions:
+    properties:
+        frequency: 'number'

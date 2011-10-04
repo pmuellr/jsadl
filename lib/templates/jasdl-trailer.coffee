@@ -1,5 +1,6 @@
 Result =
-    classes: Classes
-    callbacks: Callbacks
+    classes:   Classes
+    shapes:    Shapes
+    functions: Functions
 
 return Result

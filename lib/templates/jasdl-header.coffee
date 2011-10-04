@@ -1,13 +1,24 @@
+Shapes    = []
 Classes   = []
-Callbacks = []
+Functions = []
+
+#-------------------------------------------------------------------------------
+class Shape
+    constructor: (@name, properties) ->
+        @properties = []
+
+        for name, type of properties
+            property = new Property(name, type)
+
+            @properties.push property
 
 #-------------------------------------------------------------------------------
 class Class
     constructor: (@name, properties) ->
-        @properties       = []
         @methods          = []
         @staticProperties = []
         @staticMethods    = []
+        @properties       = []
 
         for name, property of properties
             property.name = name
@@ -46,23 +57,30 @@ class Method extends FunctionDesc
     constructor: (@name, properties) ->
         super
         @isStatic = false
-    isMethod: true
+
+    isMethod:   true
     isProperty: false
 
 #-------------------------------------------------------------------------------
 class Property
     constructor: (@name, @type) ->
         @isStatic = false
-    isMethod: false
+
+    isMethod:   false
     isProperty: true
 
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-aCallback = (name, properties) ->
-    callback = new FunctionDesc(name, properties)
-    Callbacks.push callback
+aFunction = (name, properties) ->
+    func = new FunctionDesc(name, properties)
+    Functions.push func
+
+#-------------------------------------------------------------------------------
+aShape = (name, properties) ->
+    shape = new Shape(name, properties)
+    Shapes.push shape
 
 #-------------------------------------------------------------------------------
 aClass = (name, properties) ->

@@ -1,0 +1,18 @@
+exportsClass 'EventEmitter'
+
+aClass EventEmitter:
+
+    methods:
+
+        addListener:        '(event: string, listener: function)'
+        on:                 '(event: string, listener: function)'
+        once:               '(event: string, listener: function)'
+        removeListener:     '(event: string, listener: function)'
+        removeAllListeners: '(event: string)'
+        setMaxListeners:    '(n: number)'
+        listeners:          'function[] (event: string)'
+        emit:               '(event: string, ...)'
+
+    events:
+        newListener:        '(event: string, listener: function)'
+
