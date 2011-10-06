@@ -1,7 +1,6 @@
 optimist      = require 'optimist'
 fs            = require 'fs'
 path          = require 'path'
-coffee        = require 'coffee-script'
 
 PROGRAM = path.basename __filename
 

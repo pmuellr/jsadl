@@ -1,0 +1,56 @@
+aModule PGAccelerometer2:
+
+    exports:
+        anInstance: 'Accelerometer'
+
+    global:
+        anInstance: 'Accelerometer'
+        name:       'navigator.accelerometer'
+
+#-------------------------------------------------------------------------------
+anInterface Accelerometer:
+    implements: 'PGEvents.EventEmitter'
+
+    methods:
+        getCurrentAcceleration: (success, error) ->
+            param  'AccelerometerSuccess'
+            param  'AccelerometerError'
+            return 'void'
+
+        watchCurrentAcceleration: (success, error, options) ->
+            param  'AccelerometerSuccess'
+            param  'AccelerometerError'
+            param  'AccelerometerOptions'
+            return 'string'
+
+        clearWatch: (watchId) ->
+            param  'string'
+            return 'void'
+
+    events:
+        change: 'AccelerometerSuccess'
+
+#-------------------------------------------------------------------------------
+aFunction
+    AccelerometerSuccess: (acceleration) ->
+        param  'Acceleration'
+        return 'void'
+
+#-------------------------------------------------------------------------------
+aFunction
+    AccelerometerError: () ->
+        return 'void'
+
+#-------------------------------------------------------------------------------
+aShape Acceleration:
+    properties:
+        x :         'number'
+        y :         'number'
+        z :         'number'
+        timestamp : 'number'
+
+#-------------------------------------------------------------------------------
+aShape AccelerometerOptions:
+    properties:
+        frequency : 'number'
+
