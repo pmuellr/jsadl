@@ -1,3 +1,5 @@
+#-------------------------------------------------------------------------------
+@jsasdl-module PGAccelerometer2
 
 #-------------------------------------------------------------------------------
 @jsasdl Accelerometer
@@ -9,9 +11,13 @@ Captures device motion in the x, y, and z direction.
 
 Get the current acceleration along the x, y, and z axis.
 
-@jsadl-parameters
-* success called when acceleration value is available
-* error   called when an error occurs
+@jsadl success
+
+called when acceleration value is available
+
+@jsadl error
+
+called when an error occurs
 
 Description
 -----------
@@ -58,10 +64,17 @@ reported from a `watchAccelerometer` call.
 
 At a regular interval, get the acceleration along the x, y, and z axis.
 
-@jsadl-parms
-* success called when acceleration value is available
-* error   called when an error occurs
-* options options
+@jsadl success
+
+called when acceleration value is available
+
+@jsadl error
+
+called when an error occurs
+
+@jsadl options
+
+options
 
 Description
 -----------
@@ -119,8 +132,9 @@ the success callback at the requested interval of 3 seconds.
 
 Stop watching the Acceleration referenced by the watch ID parameter.
 
-@jsadl-parms
-* watchID The ID returned by @jsadl:Accelerometer.watchAcceleration.
+@jsadl watchID
+
+The ID returned by @jsadl:Accelerometer.watchAcceleration.
 
 Supported Platforms
 -------------------
@@ -143,11 +157,21 @@ Quick Example
 
 Contains Accelerometer data captured at a specific point in time.
 
-@jsadl-properties
-* x         Amount of motion on the x-axis. Range [0, 1]
-* y         Amount of motion on the y-axis. Range [0, 1]
-* z         Amount of motion on the z-axis. Range [0, 1]
-* timestamp Creation timestamp in milliseconds.
+@jsadl x
+
+Amount of motion on the x-axis. Range [0, 1]
+
+@jsadl y
+
+Amount of motion on the y-axis. Range [0, 1]
+
+@jsadl z
+
+Amount of motion on the z-axis. Range [0, 1]
+
+@jsadl timeStamp
+
+Creation timestamp in milliseconds
 
 Description
 -----------
@@ -180,12 +204,13 @@ Quick Example
 
 
 #-------------------------------------------------------------------------------
-@jsadl AccelerometerValue
+@jsadl AccelerometerSuccess
 
 onSuccess callback function that provides the `Acceleration` information.
 
-@jsdl-parms
-* acceleration  The acceleration at a single moment in time. (Acceleration)
+@jsdl acceleration
+
+The acceleration at a single moment in time. (Acceleration)
 
 Example
 -------
@@ -208,5 +233,6 @@ onError callback function for acceleration functions.
 
 An optional parameter to customize the retrieval of the accelerometer.
 
-@jsadl-properties
-* frequency  How often to retrieve the Acceleration in milliseconds. (Default: 10000)
+@jsadl frequency
+
+How often to retrieve the Acceleration in milliseconds. (Default: 10000)

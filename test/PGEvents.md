@@ -1,4 +1,7 @@
 #-------------------------------------------------------------------------------
+@jsasdl-module PGEvents
+
+#-------------------------------------------------------------------------------
 Many objects in Node emit events: a `net.Server` emits an event each time
 a peer connects to it, a `fs.readStream` emits an event when the file is
 opened. All objects which emit events are instances of
@@ -26,7 +29,7 @@ All EventEmitters emit the event `'newListener'` when new listeners are
 added.
 
 #-------------------------------------------------------------------------------
-@jsadl EventEmitter.addListener
+@jsadl addListener
 
 Adds a listener to the end of the listeners array for the specified event.
 
@@ -35,12 +38,12 @@ Adds a listener to the end of the listeners array for the specified event.
     });
 
 #-------------------------------------------------------------------------------
-@jsadl EventEmitter.on
+@jsadl on
 
-Shorter version of @jasdl:EventEmitter.addListener
+Shorter named version of @jasdl:EventEmitter.addListener
 
 #-------------------------------------------------------------------------------
-@jsadl EventEmitter.once
+@jsadl once
 
 Adds a **one time** listener for the event.
 The listener is invoked only the first time the event is fired, after
@@ -51,7 +54,7 @@ which it is removed.
     });
 
 #-------------------------------------------------------------------------------
-@jsadl EventEmitter.removeListener
+@jsadl removeListener
 
 Remove a listener from the listener array for the specified event.
 **Caution**: changes array indices in the listener array behind the listener.
@@ -64,12 +67,12 @@ Remove a listener from the listener array for the specified event.
     server.removeListener('connection', callback);
 
 #-------------------------------------------------------------------------------
-@jsadl EventEmitter.removeAllListeners
+@jsadl removeAllListeners
 
 Removes all listeners from the listener array for the specified event.
 
 #-------------------------------------------------------------------------------
-@jsadl EventEmitter.setMaxListeners
+@jsadl setMaxListeners
 
 By default EventEmitters will print a warning if more than 10 listeners are added to it.
 This is a useful default which helps finding memory leaks.
@@ -77,7 +80,7 @@ Obviously not all Emitters should be limited to 10. This function allows
 that to be increased. Set to zero for unlimited.
 
 #-------------------------------------------------------------------------------
-@jsadl EventEmitter.listeners
+@jsadl listeners
 
 Returns an array of listeners for the specified event.
 This array can be manipulated, e.g. to remove listeners.
@@ -88,11 +91,11 @@ This array can be manipulated, e.g. to remove listeners.
     console.log(util.inspect(server.listeners('connection')); // [ [Function] ]
 
 #-------------------------------------------------------------------------------
-@jsadl EventEmitter.emit
+@jsadl emit
 
 Execute each of the listeners in order with the supplied arguments.
 
 #-------------------------------------------------------------------------------
-@jsadl EventEmitter-newListener
+@jsadl -newListener
 
 This event is emitted any time someone adds a new listener.
