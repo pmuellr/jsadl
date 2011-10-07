@@ -12,44 +12,44 @@ anInterface EventEmitter:
     methods:
 
         addListener: (event, listener) ->
-            param  'string'
-            param  'function'
+            @param 'string'
+            @param 'function'
             return ''
 
         on: (event, listener) ->
-            param  'string'
-            param  'function'
+            @param 'string'
+            @param 'function'
             return ''
 
         once: (event, listener) ->
-            param  'string'
-            param  'function'
+            @param 'string'
+            @param 'function'
             return ''
 
         removeListener: (event, listener) ->
-            param  'string'
-            param  'function'
+            @param 'string'
+            @param 'function'
             return ''
 
         removeAllListeners: (event) ->
-            param  'string'
+            @param 'string'
             return ''
 
         setMaxListeners: (n) ->
-            param  'number'
+            @param 'number'
             return ''
 
         listeners: (event) ->
-            param  'string'
+            @param 'string'
             return 'function[]'
 
         emit: (event) ->
-            param  'string'
-            param  '...'
+            @param 'string'
+            @param '...'
             return ''
 
     events:
         newListener: (event, listener) ->
-            param  'string'
-            param  'function'
+            @param 'string'
+            @param 'function'
             return 'void'

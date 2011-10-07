@@ -13,18 +13,18 @@ anInterface Accelerometer:
 
     methods:
         getCurrentAcceleration: (success, error) ->
-            param  'AccelerometerSuccess'
-            param  'AccelerometerError'
+            @param 'AccelerometerSuccess'
+            @param 'AccelerometerError'
             return 'void'
 
         watchCurrentAcceleration: (success, error, options) ->
-            param  'AccelerometerSuccess'
-            param  'AccelerometerError'
-            param  'AccelerometerOptions'
+            @param 'AccelerometerSuccess'
+            @param 'AccelerometerError'
+            @param 'AccelerometerOptions'
             return 'string'
 
         clearWatch: (watchId) ->
-            param  'string'
+            @param 'string'
             return 'void'
 
     events:
@@ -33,7 +33,7 @@ anInterface Accelerometer:
 #-------------------------------------------------------------------------------
 aFunction
     AccelerometerSuccess: (acceleration) ->
-        param  'Acceleration'
+        @param 'Acceleration'
         return 'void'
 
 #-------------------------------------------------------------------------------

@@ -1,14 +1,13 @@
 optimist      = require 'optimist'
 fs            = require 'fs'
 path          = require 'path'
+coffee        = require 'coffee-script'
 
 PROGRAM = path.basename __filename
 
 OFile = null
 IFiles  = []
-Result  =
-    classes:   []
-    callbacks: []
+Modules = {}
 
 Header  = null
 Trailer = null
@@ -19,15 +18,16 @@ exports.run = ->
     readTemplates()
 
     for iFile in IFiles
+        console.log "processing file '#{iFile}'"
         processFile iFile
 
-    Result = JSON.stringify Result, null, 4
+    Modules = JSON.stringify Modules, null, 4
     if not OFile
-        console.log Result
+        console.log Modules
         return
 
     try
-        fs.writeFileSync OFile, Result
+        fs.writeFileSync OFile, Modules
     catch e
         error "error writing file #{OFile}: #{e}"
 
@@ -52,6 +52,10 @@ exports.compile = (iFile) ->
     try
         result = eval(js)
     catch e
+        if typeof(e) isnt "string"
+            for own key, val of e
+                console.log("exception.#{key}: #{val}")
+
         error "error eval'ing templated jsadl file #{iFile}: #{e}"
 
     result
@@ -59,17 +63,20 @@ exports.compile = (iFile) ->
 #-------------------------------------------------------------------------------
 processFile = (iFile) ->
 
-    result = exports.compile(iFile)
+    modules = exports.compile(iFile)
 
-    Result.classes   = Result.classes.concat   result.classes
-    Result.callbacks = Result.callbacks.concat result.callbacks
+    for own name, definition of modules
+        if name in Modules
+            throw "module #{name} defined multiple modules"
+
+        Modules[name] = definition
 
 #-------------------------------------------------------------------------------
 readTemplates = ->
     dirName = path.dirname __filename
 
-    Header  = readFile path.join(dirName, "templates", "jasdl-header.coffee")
-    Trailer = readFile path.join(dirName, "templates", "jasdl-trailer.coffee")
+    Header  = readFile path.join(dirName, "templates", "jsadl-header.coffee")
+    Trailer = readFile path.join(dirName, "templates", "jsadl-trailer.coffee")
 
 #-------------------------------------------------------------------------------
 readFile = (fileName) ->
